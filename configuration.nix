@@ -46,7 +46,7 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      home-manager.nixosModule.home-manager
+      home-manager.nixosModules.home-manager
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -70,17 +70,22 @@ in {
 
   time.timeZone = "America/New_York";
 
-  i18n.defaultLocale = "en_US.utf8";
+  i18n.defaultLocale = "en_US.UTF-8";
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.mik = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-    ];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.mik = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+      useDefaultShell = true;
+      packages = with pkgs; [
+        firefox
+      ];
+    };
   };
 
   home-manager.users.mik = import ./user.nix;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -128,6 +133,8 @@ in {
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     gtkUsePortal = true;
   };
+
+  programs.zsh.enable = true;
 
   # enable sway window manager
   programs.sway = {

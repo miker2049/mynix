@@ -6,13 +6,6 @@
   home.username = "mik";
   home.homeDirectory = "/home/mik";
 
-  wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    config = null;
-};
-  xdg.configFile."sway/config".source = ./sway.conf;
-
   home.packages = [
     # pkgs.nixfmt
     # pkgs.chromium
@@ -81,9 +74,11 @@
     enable = true;
     client.enable = true;
   };
+  xdg.configFile."sway/config".source = ./sway.conf;
 
   programs.direnv.enable = true;
   services.lorri.enable = true;
+
   programs.zsh = {
     enable = true;
     profileExtra = ''

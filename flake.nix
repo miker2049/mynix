@@ -2,10 +2,10 @@
   description = "A very basic flake";
 
   inputs = {
-      home-manager.url = "github:rycee/home-manager/master";
-      home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs }@attrs: {
+  outputs = { self, nixpkgs, ... }@attrs: {
 
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
 
