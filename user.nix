@@ -74,7 +74,11 @@
     enable = true;
     client.enable = true;
   };
+
   xdg.configFile."sway/config".source = ./sway.conf;
+  xdg.configFile."waybar/config".source = ./waybar.conf;
+  xdg.configFile."waybar/styles.css".source = ./waybar.css;
+  xdg.configFile."swayr/config.toml".source = ./swayr.toml;
 
   programs.direnv.enable = true;
   services.lorri.enable = true;

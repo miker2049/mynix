@@ -43,6 +43,7 @@ let
   };
 
 in {
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -53,7 +54,7 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "testnix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -106,6 +107,9 @@ in {
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
+    swayr
+    autotiling
+    flashfocus
   ];
 
   programs.light.enable = true;
