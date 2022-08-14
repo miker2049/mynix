@@ -7,34 +7,18 @@
   home.homeDirectory = "/home/mik";
 
   home.packages = [
-    # pkgs.nixfmt
-    # pkgs.chromium
-    # pkgs.htop
-    # pkgs.swaybg
-    # pkgs.autotiling
-    # pkgs.libnotify
-    # pkgs.kitty # gpu accelerated terminal
-    # pkgs.glib # gsettings
-    # pkgs.dracula-theme # gtk theme
-    # pkgs.gnome3.adwaita-icon-theme # default gnome cursors
-    # pkgs.swaylock
-    # pkgs.swayidle
-    # pkgs.grim # screenshot functionality
-    # pkgs.slurp # screenshot functionality
-    # pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    # pkgs.bemenu # wayland clone of dmenu
-    # pkgs.mako # notification system developed by swaywm maintainer
-    # pkgs.wayland
-    # pkgs.ffmpeg
-    # pkgs.jq
-    # pkgs.sysz
-    # pkgs.fzf
-    # pkgs.ripgrep
-    # pkgs.silver-searcher
-    # pkgs.nixfmt
-    # pkgs.iosevka
-    # pkgs.bc
-    # pkgs.lf
+    pkgs.htop
+    pkgs.ffmpeg
+    pkgs.jq
+    pkgs.sysz
+    pkgs.fzf
+    pkgs.ripgrep
+    pkgs.silver-searcher
+    pkgs.nixfmt
+    pkgs.iosevka
+    pkgs.bc
+    pkgs.lf
+    pkgs.font-awesome
     # pkgs.borgbackup
     # pkgs.borgmatic
     # pkgs.gimp-with-plugins
@@ -44,7 +28,7 @@
     # pkgs.nodePackages.npm
     # pkgs.supercollider-with-plugins
     # pkgs.tiled
-    # pkgs.vlc
+    pkgs.vlc
   ];
 
   nixpkgs.overlays = [
@@ -75,10 +59,12 @@
     client.enable = true;
   };
 
+  xdg.configFile."wallpapers/wallpaper.png".source = ./wallpaper.png;
   xdg.configFile."sway/config".source = ./sway.conf;
   xdg.configFile."waybar/config".source = ./waybar.conf;
-  xdg.configFile."waybar/styles.css".source = ./waybar.css;
+  xdg.configFile."waybar/style.css".source = ./waybar.css;
   xdg.configFile."swayr/config.toml".source = ./swayr.toml;
+  xdg.configFile."i3status-rust/config.toml".source = ./i3status-rust.toml;
 
   programs.direnv.enable = true;
   services.lorri.enable = true;
@@ -110,7 +96,6 @@
   services.kanshi.enable = true;
   programs.mako.enable = true;
   services.swayidle.enable = true;
-  programs.waybar.enable = true;
 
 
   programs.ssh.enable = true;
