@@ -111,6 +111,7 @@ in {
     mako # notification system developed by swaywm maintainer
     autotiling
     flashfocus
+    pulseaudio
   ];
 
   programs.light.enable = true;
