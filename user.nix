@@ -60,6 +60,7 @@
   };
 
   xdg.configFile."wallpapers/wallpaper.png".source = ./wallpaper.png;
+  xdg.configFile."flashfocus/flashfocus.yml".source = ./flashfocus.yml;
   xdg.configFile."sway/config".source = ./sway.conf;
   xdg.configFile."waybar/config".source = ./waybar.conf;
   xdg.configFile."waybar/style.css".source = ./waybar.css;
