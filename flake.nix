@@ -16,6 +16,11 @@
       modules = [ ./configuration.nix ];
       specialArgs = attrs;
     };
+    nixosConfigurations.lenovix = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [ ./configuration.nix ];
+      specialArgs = attrs;
+    };
 
   };
 }

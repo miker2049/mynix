@@ -19,6 +19,10 @@
     pkgs.bc
     pkgs.lf
     pkgs.font-awesome
+    pkgs.nextcloud-client
+    pkgs.pavucontrol
+    pkgs.wofi
+    pkgs.feh
     # pkgs.borgbackup
     # pkgs.borgmatic
     # pkgs.gimp-with-plugins
@@ -51,10 +55,10 @@
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [ epkgs.vterm epkgs.all-the-icons ];
-    # package = pkgs.emacsPgtkNativeComp;
+    package = pkgs.emacsPgtkNativeComp;
   };
   services.emacs = {
-    # package = pkgs.emacsPgtkNativeComp;
+    package = pkgs.emacsPgtkNativeComp;
     enable = true;
     client.enable = true;
   };
@@ -69,6 +73,7 @@
   };
 
   xdg.configFile."wallpapers/wallpaper.png".source = ./wallpaper.png;
+  xdg.configFile."wallpapers/wallpaper-lock.png".source = ./wallpaper-lock.png;
   xdg.configFile."flashfocus/flashfocus.yml".source = ./flashfocus.yml;
   xdg.configFile."sway/config".source = ./sway.conf;
   xdg.configFile."waybar/config".source = ./waybar.conf;
@@ -76,6 +81,7 @@
   xdg.configFile."swayr/config.toml".source = ./swayr.toml;
   xdg.configFile."i3status-rust/config.toml".source = ./i3status-rust.toml;
 
+  home.sessionPath = [ "$HOME/.local/bin" ];
   programs.direnv.enable = true;
   services.lorri.enable = true;
 
@@ -104,9 +110,11 @@
 
   #utils.swaylock.enable = true;
   services.kanshi.enable = true;
-  programs.mako.enable = true;
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 10000;
+  };
   services.swayidle.enable = true;
-
 
   programs.ssh.enable = true;
   # Let Home Manager install and manage itself.

@@ -1,5 +1,5 @@
 [menu]
-executable = 'bemenu'
+executable = 'wofi'
 args = [
     '--show=dmenu',
     '--allow-markup',

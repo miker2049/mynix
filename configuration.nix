@@ -46,7 +46,7 @@ in {
 
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       home-manager.nixosModules.home-manager
     ];
 
@@ -54,11 +54,12 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "testnix"; # Define your hostname.
+  networking.hostName = "lenovix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+  networking.firewall.checkReversePath = "loose"; #for tailscale
 
   services.xserver = {
     enable = true;
@@ -107,11 +108,22 @@ in {
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
     autotiling
     flashfocus
     pulseaudio
+    swayr
+    (rofi-wayland.override { plugins = [
+      rofi-calc
+      rofi-file-browser
+      rofi-vpn
+    ];})
+    rofi-rbw
+    rbw
+    rofimoji
+    rofi-power-menu
+    wtype
+    pinentry-gtk2
   ];
 
   programs.light.enable = true;
@@ -120,6 +132,8 @@ in {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
+    media-session.enable = true;
+    wireplumber.enable = false;
   };
 
 
